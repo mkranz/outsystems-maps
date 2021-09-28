@@ -88,10 +88,10 @@ namespace OSFramework.Event.OSMap {
             // If the event type is not ProviderEvent than we need to get the handlers for the eventType (Initialized, OnError, OnEventTriggered)
             const hasEvents =
                 eventType === MapEventType.ProviderEvent
-                    ? this.handlers.has(eventInfo as MapEventType)
-                    : this.handlers.has(eventType);
+                    ? this.events.has(eventInfo as MapEventType)
+                    : this.events.has(eventType);
             if (hasEvents) {
-                const handlerEvent = this.handlers.get(eventType);
+                const handlerEvent = this.events.get(eventType);
 
                 switch (eventType) {
                     case MapEventType.Initialized:
@@ -118,7 +118,7 @@ namespace OSFramework.Event.OSMap {
                         if (
                             this._map.validateProviderEvent(eventInfo) === true
                         ) {
-                            const handler = this.handlers.get(
+                            const handler = this.events.get(
                                 eventInfo as MapEventType
                             );
                             handler.trigger(

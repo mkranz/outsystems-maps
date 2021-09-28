@@ -65,10 +65,10 @@ namespace OSFramework.Event.DrawingTools {
             // If the event type is not ProviderEvent than we need to get the handlers for the eventType (Initialized, OnError, OnEventTriggered)
             const hasEvents =
                 eventType === DrawingToolsEventType.ProviderEvent
-                    ? this.handlers.has(eventInfo as DrawingToolsEventType)
-                    : this.handlers.has(eventType);
+                    ? this.events.has(eventInfo as DrawingToolsEventType)
+                    : this.events.has(eventType);
             if (hasEvents) {
-                const handlerEvent = this.handlers.get(eventType);
+                const handlerEvent = this.events.get(eventType);
 
                 switch (eventType) {
                     case DrawingToolsEventType.Initialized:
@@ -85,7 +85,7 @@ namespace OSFramework.Event.DrawingTools {
                                 eventInfo
                             ) === true
                         ) {
-                            const handler = this.handlers.get(
+                            const handler = this.events.get(
                                 eventInfo as DrawingToolsEventType
                             );
                             handler.trigger(

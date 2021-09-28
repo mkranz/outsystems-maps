@@ -76,10 +76,10 @@ namespace OSFramework.Event.Marker {
             // If the event type is not ProviderEvent than we need to get the handlers for the eventType (Initialized, OnError, OnEventTriggered)
             const hasEvents =
                 eventType === MarkerEventType.ProviderEvent
-                    ? this.handlers.has(eventInfo as MarkerEventType)
-                    : this.handlers.has(eventType);
+                    ? this.events.has(eventInfo as MarkerEventType)
+                    : this.events.has(eventType);
             if (hasEvents) {
-                const handlerEvent = this.handlers.get(eventType);
+                const handlerEvent = this.events.get(eventType);
 
                 // The following events are being deprecated. They should get removed soon.
                 switch (eventType) {
@@ -113,7 +113,7 @@ namespace OSFramework.Event.Marker {
                             this._marker.validateProviderEvent(eventInfo) ===
                             true
                         ) {
-                            const handler = this.handlers.get(
+                            const handler = this.events.get(
                                 eventInfo as MarkerEventType
                             );
                             handler.trigger(

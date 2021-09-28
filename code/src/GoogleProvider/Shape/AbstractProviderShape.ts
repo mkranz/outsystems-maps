@@ -76,7 +76,7 @@ namespace GoogleProvider.Shape {
             // Any events that got added to the shapeEvents via the API Subscribe method will have to be taken care here
             // If the Event type of each handler is ShapeProviderEvent, we want to make sure to add that event to the listeners of the google shape provider (e.g. dblclick, dragend, etc)
             // Otherwise, we don't want to add them to the google provider listeners (e.g. OnInitialize, OnClick, etc)
-            this.shapeEvents.handlers.forEach(
+            this.shapeEvents.events.forEach(
                 (
                     handler: OSFramework.Event.IEvent<string>,
                     eventName: string

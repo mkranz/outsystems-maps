@@ -65,10 +65,10 @@ namespace OSFramework.Event.Shape {
             // If the event type is not ProviderEvent than we need to get the handlers for the eventType (Initialized, OnError, OnEventTriggered)
             const hasEvents =
                 eventType === ShapeEventType.ProviderEvent
-                    ? this.handlers.has(eventInfo as ShapeEventType)
-                    : this.handlers.has(eventType);
+                    ? this.events.has(eventInfo as ShapeEventType)
+                    : this.events.has(eventType);
             if (hasEvents) {
-                const handlerEvent = this.handlers.get(eventType);
+                const handlerEvent = this.events.get(eventType);
 
                 switch (eventType) {
                     case ShapeEventType.Initialized:
@@ -89,7 +89,7 @@ namespace OSFramework.Event.Shape {
                             this._shape.validateProviderEvent(eventInfo) ===
                             true
                         ) {
-                            const handler = this.handlers.get(
+                            const handler = this.events.get(
                                 eventInfo as ShapeEventType
                             );
                             handler.trigger(

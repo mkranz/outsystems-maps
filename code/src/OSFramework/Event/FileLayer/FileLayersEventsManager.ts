@@ -54,8 +54,8 @@ namespace OSFramework.Event.FileLayer {
             ...args: any
         ): void {
             // Check if the FileLayer has any events associated
-            if (this.handlers.has(eventType)) {
-                const handlerEvent = this.handlers.get(eventType);
+            if (this.events.has(eventType)) {
+                const handlerEvent = this.events.get(eventType);
 
                 switch (eventType) {
                     case FileLayersEventType.Initialized:

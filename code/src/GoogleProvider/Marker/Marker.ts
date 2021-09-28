@@ -135,7 +135,7 @@ namespace GoogleProvider.Marker {
             // Any events that got added to the markerEvents via the API Subscribe method will have to be taken care here
             // If the Event type of each handler is MarkerProviderEvent, we want to make sure to add that event to the listeners of the google marker provider (e.g. click, dblclick, contextmenu, etc)
             // Otherwise, we don't want to add them to the google provider listeners (e.g. OnInitialize, OnTriggeredEvent, etc)
-            this.markerEvents.handlers.forEach(
+            this.markerEvents.events.forEach(
                 (handler: OSFramework.Event.IEvent<string>, eventName) => {
                     if (
                         handler instanceof
