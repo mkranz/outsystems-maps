@@ -33,6 +33,12 @@ namespace OSFramework.Shape {
         public get config(): T {
             return this._config;
         }
+        public get events(): Event.Shape.ShapeEventsManager {
+            return this._shapeEvents;
+        }
+        public get initializeEvent(): Event.Shape.ShapeEventType {
+            return Event.Shape.ShapeEventType.Initialized;
+        }
         public get isReady(): boolean {
             return this._built;
         }

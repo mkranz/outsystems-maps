@@ -37,6 +37,9 @@ namespace OSFramework.Marker {
         public get config(): Configuration.IConfigurationMarker {
             return this._config;
         }
+        public get events(): Event.Marker.MarkerEventsManager {
+            return this._markerEvents;
+        }
         public get hasPopup(): boolean {
             return false;
         }
@@ -44,6 +47,9 @@ namespace OSFramework.Marker {
             return this._map.markers.findIndex(
                 (marker) => marker.uniqueId === this.uniqueId
             );
+        }
+        public get initializeEvent(): Event.Marker.MarkerEventType {
+            return Event.Marker.MarkerEventType.Initialized;
         }
         public get isReady(): boolean {
             return this._built;

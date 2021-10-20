@@ -29,7 +29,9 @@ namespace GoogleProvider.DrawingTools {
             this.drawingTools.createdElements.push(newElm);
 
             // Trigger the event of element complete (markercomplete, polylinecomplete, polygoncomplete, etc) with the information of a new element (boolean set to True)
-            this.triggerOnDrawingChangeEvent(uniqueId, true);
+            newElm.events.addHandler(newElm.initializeEvent, () =>
+                this.triggerOnDrawingChangeEvent(uniqueId, true)
+            );
 
             // Make sure to remove the overlays after creating them,
             // Otherwise the following line which will create the shape/marker will be over the overlay of the provider
@@ -112,6 +114,6 @@ namespace GoogleProvider.DrawingTools {
             element: any,
             // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
             configs: any
-        ): void;
+        ): OSFramework.Shape.IShape | OSFramework.Marker.IMarker;
     }
 }

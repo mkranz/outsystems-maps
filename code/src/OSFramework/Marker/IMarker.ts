@@ -5,9 +5,11 @@ namespace OSFramework.Marker {
             Interface.ISearchById,
             Interface.IDisposable {
         config: Configuration.IConfigurationMarker; //IConfigurationMarker
+        events: Event.Marker.MarkerEventsManager;
         /** Returns True if the Marker has a popup (MarkerPopup) */
         hasPopup: boolean;
         index: number;
+        initializeEvent: Event.Marker.MarkerEventType;
         isReady: boolean;
         map: OSMap.IMap; //IMap
         markerEvents: Event.Marker.MarkerEventsManager;

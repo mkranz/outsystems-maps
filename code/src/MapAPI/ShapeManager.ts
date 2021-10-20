@@ -123,11 +123,22 @@ namespace MapAPI.ShapeManager {
      */
     export function GetShapeById(
         shapeId: string,
-        raiseError = true
+        raiseError = true,
+        deepSearch = true
     ): OSFramework.Shape.IShape {
-        const shape: OSFramework.Shape.IShape = shapeArr.find(
+        let shape: OSFramework.Shape.IShape = shapeArr.find(
             (p) => p && p.equalsToID(shapeId)
         );
+
+        if (shape === undefined && deepSearch === true) {
+            const maps = MapManager.GetMapsFromPage();
+            const map = Array.from(maps).find((map) =>
+                map[1].getShape(shapeId)
+            )[1];
+            if (map !== undefined) {
+                shape = map.getShape(shapeId);
+            }
+        }
 
         if (shape === undefined && raiseError) {
             throw new Error(`Shape id:${shapeId} not found`);
